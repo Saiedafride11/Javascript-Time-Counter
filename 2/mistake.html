@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+        background-color: #f00;
+        font-size: 16px;
+        color: #fff;
+    }
+    .wrapper{
+        display: flex;
+        align-items:center;
+        justify-content:center;
+        margin-top: 200px;
+    }
+    .box{
+        width: 200px;
+        margin: 0 20px;
+        text-transform: uppercase;
+        font-size: 30px;
+        text-align: center;
+    }
+    .box span {
+        display:block;
+        font-size: 60px;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">
+            Weeks
+            <span id="week">05</span>
+        </div>
+        <div class="box">
+            Days
+            <span id="days">15</span>
+        </div>
+        <div class="box">
+            Hours
+            <span id="hours">19</span>
+        </div>
+        <div class="box">
+            Minutes
+            <span id="minutes">35</span>
+        </div>
+        <div class="box">
+            Seconds
+            <span id="seconds">55</span>
+        </div>
+    </div>
+
+    <script>
+        var evenDate = new Date("Nov 14, 2020").getTime();
+
+        var x = setInterval(function() {
+            var currentDate = new Date().getTime();
+            var different = evenDate - currentDate;
+            
+            var s = Math.floor(different / 1000);
+            var m = Math.floor(s / 60);
+            var h = Math.floor(m / 60);
+            var d = Math.floor(h / 24);
+            var w = Math.floor(d / 7);
+
+        
+            s %= 60;
+            m %= 60;
+            h %= 24;
+
+            
+            s = (s < 10) ? "0" + s : s;
+            m = (m < 10) ? "0" + m : m;
+            h = (h < 10) ? "0" + h : h;
+            d = (d < 10) ? "0" + d : d;
+            w = (w < 10) ? "0" + w : w;
+
+            document.getElementById('week').innerHTML = w;
+            document.getElementById('days').innerHTML = d;
+            document.getElementById('hours').innerHTML = h;
+            document.getElementById('minutes').innerHTML = m;
+            document.getElementById('seconds').innerHTML = s;
+
+            if(different <= 0){
+                clearInterval(x);
+            }
+
+        }, 1000);
+    </script>
+</body>
+</html>

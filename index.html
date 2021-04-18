@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pohela Boishak</title>
+    <style>
+        body{
+            background: #f6f6f6
+        }
+
+        .time-counter{
+            display: flex;
+            text-align: center;
+            background: #fff;
+            margin:20px;
+            padding:50px;
+            box-shadow: 0 5px 10px grey;
+			font-size:80px;
+        }
+        .time{
+           
+        }
+    </style>
+</head>
+<body>
+   
+    <h1 style="font-size:50px; text-align:center; font-family:popins">Javascript Time Counter</h1>
+	
+
+    <div class="time-counter">
+        <div class="time">
+            Days
+            <span id="days">0</span>
+        </div>
+        <div class="time">
+            Hours
+            <span id="hours">0</span>
+        </div>
+        <div class="time">
+            Minutes
+            <span id="minutes">0</span>
+        </div>
+        <div class="time">
+            Seconds
+            <span id="seconds">0</span>
+        </div>
+    </div>
+
+    <script>
+        function countTime(){
+            var now = new Date().getTime();
+            var nextTime = new Date("April 24, 2021 15:40:25").getTime();
+
+
+            var time = nextTime - now;
+            
+
+            var s = Math.floor(time / 1000);
+            var m = Math.floor(s / 60);
+            var h = Math.floor(m / 60);
+            var d = Math.floor(h / 24);
+
+           
+            s %= 60; // s = s % 60;
+            m %= 60; // m = m % 60;
+            h %= 24; // h = h % 24;
+
+           
+
+            // s = (s < 10) ? "0" + s : s;
+            // m = (m < 10) ? "0" + m : m;
+            // h = (h < 10) ? "0" + h : h;
+            // d = (d < 10) ? "0" + d : d;
+
+           if(s < 10){
+               s = "0" + s;
+           }
+           if(m < 10){
+               m = "0" + m;
+           }
+           if(h < 10){
+               h = "0" + h;
+           }
+           if(d < 10){
+               d = "0" + d;
+           }
+          
+            document.getElementById("days").innerText = d;
+            document.getElementById("hours").innerText = h;
+            document.getElementById("minutes").innerText = m;
+            document.getElementById("seconds").innerText = s;
+
+            
+	
+        }
+        setInterval(countTime, 1000) 
+    </script>
+</body>
+</html>
